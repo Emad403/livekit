@@ -215,6 +215,10 @@ func getConfig(c *cli.Context) (*config.Config, error) {
 			conf.Keys = map[string]string{
 				"devkey": "secret",
 			}
+			conf.WebHook.URLs = []string{"http://localhost:8080/api/v1/webhooks"}
+			conf.WebHook.APIKey = "devkey"
+			conf.Redis.Address = "127.0.0.1:6378"
+			conf.RTC.ExternalIPOnly = false
 			shouldMatchRTCIP := false
 			// when dev mode and using shared keys, we'll bind to localhost by default
 			if conf.BindAddresses == nil {
